@@ -1,15 +1,17 @@
 export const categories = [
   'ears',
-  'hat',
+  'eyebrows',
 ];
 
 export const decorations = {
   'ears': [
-    'one',
-    'two',
+    'ears_default',
+    'ears_in',
+    'ears_out',
   ],
-  'hat': [
-    'one',
-    'two',
+  'eyebrows': [
+    'eyebrows_default',
+    'eyebrows_angry',
+    'eyebrows_distraught',
   ],
 }

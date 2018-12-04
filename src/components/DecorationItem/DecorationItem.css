@@ -1,0 +1,14 @@
+.DecorationItem {
+  height: 100%;
+  width: 150px;
+
+  background-color: yellow;
+}
+
+.DecorationItem:hover {
+  background-color: white;
+}
+
+.selected {
+  background-color: white;
+}
