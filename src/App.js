@@ -1,25 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import CategoryBar from './components/CategoryBar/CategoryBar';
+import DecorationBar from './components/DecorationBar/DecorationBar';
+import PreviewArea from './components/PreviewArea/PreviewArea';
+
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categorySelected: 0,
+      decorations: [0, 0],
+    }
+  }
+
+  updateCategory(category) {
+    this.setState({
+      categorySelected: category,
+    });
+  }
+
+  updateDecoration(decoration) {
+    const { state } = this;
+
+    const decorations = state.decorations.map((elem, i) => {
+      return i === state.categorySelected ? decoration : elem;
+    })
+
+    this.setState({ decorations });
+  }
+
   render() {
+    const { state } = this;
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <PreviewArea decorations={state.decorations} />
+        <DecorationBar
+          category={state.categorySelected}
+          update={(decoration) => this.updateDecoration(decoration)}
+        />
+        <CategoryBar
+          category={state.categorySelected}
+          update={(category) => this.updateCategory(category)}
+        />
       </div>
     );
   }
