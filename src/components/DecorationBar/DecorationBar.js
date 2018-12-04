@@ -9,15 +9,15 @@ class DecorationBar extends Component {
   render() {
     const { props } = this;
 
-    const decorationList = decorations[categories[props.category]]
+    const decorationList = decorations[categories[props.categorySelected]]
 
     return (
       <ul className="DecorationBar">
         {decorationList.map((category, i) => (
           <DecorationItem
             name={category}
-            selected={false}
-            update={() => props.update(i)}
+            selected={i === props.decorationSelected}
+            onClick={() => props.updateDecoration(i)}
           />
         ))}
       </ul>

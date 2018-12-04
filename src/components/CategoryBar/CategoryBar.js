@@ -14,8 +14,8 @@ class CategoryBar extends Component {
         {categories.map((category, i) => (
           <CategoryItem
             name={category}
-            selected={i === props.category}
-            update={() => props.update(i)}
+            selected={i === props.categorySelected}
+            onClick={() => props.updateCategory(i)}
           />
         ))}
       </ul>

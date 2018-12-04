@@ -39,12 +39,13 @@ class App extends Component {
       <div className="App">
         <PreviewArea decorations={state.decorations} />
         <DecorationBar
-          category={state.categorySelected}
-          update={(decoration) => this.updateDecoration(decoration)}
+          decorationSelected={state.decorations[state.categorySelected]}
+          categorySelected={state.categorySelected}
+          updateDecoration={(decoration) => this.updateDecoration(decoration)}
         />
         <CategoryBar
-          category={state.categorySelected}
-          update={(category) => this.updateCategory(category)}
+          categorySelected={state.categorySelected}
+          updateCategory={(category) => this.updateCategory(category)}
         />
       </div>
     );

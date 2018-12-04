@@ -15,7 +15,7 @@ class CategoryItem extends Component {
     return (
       <li
         className={className}
-        onClick={props.update}
+        onClick={props.onClick}
       >
         {props.name}
       </li>
