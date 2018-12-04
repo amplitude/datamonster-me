@@ -1,3 +1,6 @@
 .PreviewArea {
+  flex: 1;
+  margin-top: 50px;
+
   background-color: aqua;
 }
