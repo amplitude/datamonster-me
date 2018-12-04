@@ -8,3 +8,7 @@
 .CategoryItem:hover {
   background-color: white;
 }
+
+.selected {
+  background-color: white;
+}
