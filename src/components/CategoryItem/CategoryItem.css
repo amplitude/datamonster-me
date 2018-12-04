@@ -1,0 +1,10 @@
+.CategoryItem {
+  height: 100%;
+  width: 150px;
+
+  background-color: yellow;
+}
+
+.CategoryItem:hover {
+  background-color: white;
+}

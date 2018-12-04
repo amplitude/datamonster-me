@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
+import CategoryItem from '../CategoryItem/CategoryItem';
+
 import './CategoryBar.css';
 
 class CategoryBar extends Component {
   render() {
     return (
-      <div className="CategoryBar">
-        CategoryBar
-      </div>
+      <ul className="CategoryBar">
+        <CategoryItem />
+        <CategoryItem />
+        <CategoryItem />
+      </ul>
     );
   }
 }
