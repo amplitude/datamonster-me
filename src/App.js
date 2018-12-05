@@ -4,7 +4,7 @@ import CategoryBar from './components/CategoryBar/CategoryBar';
 import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
 
-import { categories } from './lib/asset_config'
+import { categories, decorations } from './lib/asset_config'
 
 import './App.css';
 
@@ -28,6 +28,22 @@ class App extends Component {
     });
   }
 
+  randomize() {
+    const numCategories = categories.length;
+    let randomDecorations = Array(numCategories);
+    randomDecorations.fill(0);
+    for (let i = 0; i < categories.length; i++) {
+      const numDecorations = decorations[categories[i]].length;
+      randomDecorations[i] = Math.floor(Math.random() * numDecorations);
+    }
+
+    console.log(randomDecorations);
+
+    this.setState({
+      decorations: randomDecorations,
+    });
+  }
+
   updateDecoration(decoration) {
     const { state } = this;
 
@@ -43,6 +59,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <button onClick={() => this.randomize()}>randomize!</button>
         <PreviewArea decorations={state.decorations} />
         <DecorationBar
           decorationSelected={state.decorations[state.categorySelected]}
