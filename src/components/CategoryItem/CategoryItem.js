@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { decorations } from '../../lib/asset_config'
 
 import './CategoryItem.css';
 
@@ -16,7 +17,7 @@ class CategoryItem extends Component {
       'selected': props.selected,
     });
 
-    const imgSrc = `assets/${props.name}/${props.name}_default.png`;
+    const imgSrc = `assets/${props.name}/${decorations[props.name][0]}.png`;
 
     return (
       <div

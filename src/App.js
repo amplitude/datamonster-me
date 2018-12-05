@@ -6,7 +6,7 @@ import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
 import TopBar from './components/TopBar/TopBar';
 
-import { categories, decorations } from './lib/asset_config'
+import { categories, decorations } from './lib/asset_config';
 
 import './App.css';
 
