@@ -2,5 +2,18 @@
   flex: 1;
   margin-top: 50px;
 
+  position: relative;
+
   background-color: aqua;
+}
+
+img {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  width: auto;
+  height: 100%;
 }

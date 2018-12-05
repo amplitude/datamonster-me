@@ -4,15 +4,21 @@ import CategoryBar from './components/CategoryBar/CategoryBar';
 import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
 
+import { categories } from './lib/asset_config'
+
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
+    const numCategories = categories.length;
+    let defaultDecorations = Array(numCategories);
+    defaultDecorations.fill(0);
+
     this.state = {
       categorySelected: 0,
-      decorations: [0, 0],
+      decorations: defaultDecorations,
     }
   }
 
