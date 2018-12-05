@@ -2,10 +2,11 @@
   height: 100px;
   margin-top: 0;
   margin-bottom: 50px;
+  padding: 5px;
 
   display: flex;
   justify-content: center;
 
-  background-color: green;
   list-style: none;
+  background-color: #ACACAC;
 }

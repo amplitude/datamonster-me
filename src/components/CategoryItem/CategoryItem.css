@@ -1,14 +1,15 @@
 .CategoryItem {
-  height: 100%;
   width: 150px;
+  margin: 5px;
+  border-radius: 8px;
 
-  background-color: yellow;
+  background-color: #00A7CF;
 }
 
 .CategoryItem:hover {
-  background-color: white;
+  background-color: rgb(0, 120, 149);
 }
 
 .selected {
-  background-color: white;
+  background-color: rgb(0, 120, 149);
 }

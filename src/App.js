@@ -37,8 +37,6 @@ class App extends Component {
       randomDecorations[i] = Math.floor(Math.random() * numDecorations);
     }
 
-    console.log(randomDecorations);
-
     this.setState({
       decorations: randomDecorations,
     });
@@ -59,8 +57,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <button onClick={() => this.randomize()}>randomize!</button>
-        <PreviewArea decorations={state.decorations} />
+        <PreviewArea
+          decorations={state.decorations}
+          randomize={() => this.randomize()}
+        />
         <DecorationBar
           decorationSelected={state.decorations[state.categorySelected]}
           categorySelected={state.categorySelected}

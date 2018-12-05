@@ -37,11 +37,13 @@ class PreviewArea extends Component {
   }
 
   render() {
-    const { state } = this;
+    const { props, state } = this;
 
     return (
       <div className="PreviewArea">
         <img src={state.srcImage} />
+        <a onClick={props.randomize}>Randomize</a>
+        <br />
         <a href={state.srcImage} download>Click to download</a>
       </div>
     );

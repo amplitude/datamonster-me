@@ -3,8 +3,6 @@
   margin-top: 50px;
 
   position: relative;
-
-  background-color: aqua;
 }
 
 img {
@@ -16,4 +14,9 @@ img {
   position: absolute;
   width: auto;
   height: 100%;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
 }
