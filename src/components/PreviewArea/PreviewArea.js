@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import mergeImages from 'merge-images';
 
 import { categories, decorations } from '../../lib/asset_config'
-import ButtonBar from '../ButtonBar/ButtonBar';
 
 import './PreviewArea.css';
 
 class PreviewArea extends Component {
-  state = {
-    srcImage: null,
-  }
-
   setSrcImage() {
     const { props } = this;
 
@@ -25,7 +20,7 @@ class PreviewArea extends Component {
 
     mergeImages(images)
       .then(src => {
-        this.setState({srcImage: src});
+        props.setSrcImg(src);
       });
   }
 
@@ -38,16 +33,11 @@ class PreviewArea extends Component {
   }
 
   render() {
-    const { props, state } = this;
+    const { props } = this;
 
     return (
       <div className="PreviewArea">
-        <ButtonBar
-          randomize={props.randomize}
-          reset={props.reset}
-          srcImage={state.srcImage}
-        />
-        <img className="preview-image" src={state.srcImage} />
+        <img className="preview-image" src={props.srcImg} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import ButtonBar from './components/ButtonBar/ButtonBar';
 import CategoryBar from './components/CategoryBar/CategoryBar';
 import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
@@ -20,6 +21,7 @@ class App extends Component {
     this.state = {
       categorySelected: 0,
       decorations: defaultDecorations,
+      srcImg: null,
     }
   }
 
@@ -53,6 +55,10 @@ class App extends Component {
     });
   }
 
+  setSrcImg(img) {
+    this.setState({srcImg: img});
+  }
+
   updateDecoration(decoration) {
     const { state } = this;
 
@@ -69,10 +75,15 @@ class App extends Component {
     return (
       <div className="App">
         <TopBar />
-        <PreviewArea
-          decorations={state.decorations}
+        <ButtonBar
           randomize={() => this.randomize()}
           reset={() => this.reset()}
+          srcImg={state.srcImg}
+        />
+        <PreviewArea
+          decorations={state.decorations}
+          setSrcImg={(img) => this.setSrcImg(img)}
+          srcImg={state.srcImg}
         />
         <DecorationBar
           decorationSelected={state.decorations[state.categorySelected]}
