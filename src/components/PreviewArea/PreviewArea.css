@@ -1,7 +1,6 @@
 .PreviewArea {
   width: 100%;
   flex: 1;
-  margin-top: 50px;
 
   position: relative;
 }
@@ -15,9 +14,4 @@
   position: absolute;
   width: auto;
   height: 100%;
-}
-
-a {
-  color: blue;
-  text-decoration: none;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import mergeImages from 'merge-images';
 
 import { categories, decorations } from '../../lib/asset_config'
+import ButtonBar from '../ButtonBar/ButtonBar';
 
 import './PreviewArea.css';
 
@@ -41,12 +42,12 @@ class PreviewArea extends Component {
 
     return (
       <div className="PreviewArea">
+        <ButtonBar
+          randomize={props.randomize}
+          reset={props.reset}
+          srcImage={state.srcImage}
+        />
         <img className="preview-image" src={state.srcImage} />
-        <a onClick={props.randomize}>RANDOM</a>
-        <br />
-        <a onClick={props.reset}>CLEAR</a>
-        <br />
-        <a href={state.srcImage} download>DOWNLOAD</a>
       </div>
     );
   }
