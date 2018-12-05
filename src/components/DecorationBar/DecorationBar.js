@@ -12,7 +12,7 @@ class DecorationBar extends Component {
     const decorationList = decorations[categories[props.categorySelected]]
 
     return (
-      <ul className="DecorationBar">
+      <div className="DecorationBar">
         {decorationList.map((decoration, i) => (
           <DecorationItem
             name={decoration}
@@ -21,7 +21,7 @@ class DecorationBar extends Component {
             onClick={() => props.updateDecoration(i)}
           />
         ))}
-      </ul>
+      </div>
     );
   }
 }
