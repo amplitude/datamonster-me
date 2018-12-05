@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CategoryBar from './components/CategoryBar/CategoryBar';
 import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
+import TopBar from './components/TopBar/TopBar';
 
 import { categories, decorations } from './lib/asset_config'
 
@@ -67,6 +68,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <TopBar />
         <PreviewArea
           decorations={state.decorations}
           randomize={() => this.randomize()}

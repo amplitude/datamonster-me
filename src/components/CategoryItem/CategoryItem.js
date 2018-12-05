@@ -3,6 +3,10 @@ import classNames from 'classnames';
 
 import './CategoryItem.css';
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 class CategoryItem extends Component {
   render() {
     const { props } = this;
@@ -12,7 +16,7 @@ class CategoryItem extends Component {
       'selected': props.selected,
     });
 
-    const imgSrc = `assets/${props.name}/${props.name}_default.svg`;
+    const imgSrc = `assets/${props.name}/${props.name}_default.png`;
 
     return (
       <div
@@ -20,7 +24,7 @@ class CategoryItem extends Component {
         onClick={props.onClick}
       >
         <img className="preview-img" src={imgSrc} />
-        <p>{props.name}</p>
+        <p className="category" >{capitalize(props.name)}</p>
       </div>
     );
   }

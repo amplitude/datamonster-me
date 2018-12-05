@@ -16,6 +16,7 @@ class DecorationBar extends Component {
         {decorationList.map((decoration, i) => (
           <DecorationItem
             name={decoration}
+            border={i !== 0}
             categoryName={categories[props.categorySelected]}
             selected={i === props.decorationSelected}
             onClick={() => props.updateDecoration(i)}

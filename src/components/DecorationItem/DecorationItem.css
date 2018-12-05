@@ -1,18 +1,28 @@
 .DecorationItem {
+  display: flex;
+  align-items: center;
+}
+
+.DecorationBorder {
+  height: 70px;
+  border-left: solid;
+  border-left-width: 1px;
+  border-color: #E3E7EA;
+}
+
+.DecorationCircle {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   margin: 30px;
 
-  background-color: #e3e7ea;
-  border:2px solid #e3e7ea;
+  border:2px solid white;
 }
 
-.DecorationItem:hover {
+.DecorationCircle:hover {
   border-color: #1285d0;
 }
 
-.DecorationItem.selected {
-  background-color: #9eaab6;
+.DecorationCircle.selected {
   border-color: #1285d0;
 }

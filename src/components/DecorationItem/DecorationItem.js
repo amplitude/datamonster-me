@@ -8,18 +8,21 @@ class DecorationItem extends Component {
     const { props } = this;
 
     const className = classNames({
-      DecorationItem: true,
+      DecorationCircle: true,
       'selected': props.selected,
     });
 
-    const imgSrc = `assets/${props.categoryName}/${props.name}.svg`;
+    const imgSrc = `assets/${props.categoryName}/${props.name}.png`;
 
     return (
-      <div
-        className={className}
-        onClick={props.onClick}
-      >
-        <img className="preview-img" src={imgSrc} />
+      <div className="DecorationItem" >
+        <div className={classNames({ DecorationBorder: props.border })} />
+        <div
+          className={className}
+          onClick={props.onClick}
+        >
+          <img className="preview-img" src={imgSrc} />
+        </div>
       </div>
     );
   }

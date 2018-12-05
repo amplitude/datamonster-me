@@ -13,16 +13,16 @@ class PreviewArea extends Component {
   setSrcImage() {
     const { props } = this;
 
-    const base_image = ['assets/base_datamonster_tail_left.svg']
+    const base_image = ['assets/base_datamonster_tail_left.png']
     const decoration_images = props.decorations.map((decoration, category) => {
       const categoryName = categories[category];
       const decorationName = decorations[categoryName][decoration];
-      return `assets/${categoryName}/${decorationName}.svg`
+      return `assets/${categoryName}/${decorationName}.png`
     });
 
     const images = base_image.concat(decoration_images);
 
-    mergeImages(images, {format: 'image/svg+xml'})
+    mergeImages(images)
       .then(src => {
         this.setState({srcImage: src});
       });
