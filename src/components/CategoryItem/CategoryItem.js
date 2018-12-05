@@ -12,13 +12,16 @@ class CategoryItem extends Component {
       'selected': props.selected,
     });
 
+    const imgSrc = `assets/${props.name}/${props.name}_default.svg`;
+
     return (
-      <li
+      <div
         className={className}
         onClick={props.onClick}
       >
-        {props.name}
-      </li>
+        <img className="preview-img" src={imgSrc} />
+        <p>{props.name}</p>
+      </div>
     );
   }
 }

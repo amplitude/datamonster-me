@@ -1,12 +1,12 @@
 .CategoryBar {
   height: 100px;
   margin-top: 0;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   padding: 5px;
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   list-style: none;
-  background-color: #ACACAC;
 }
