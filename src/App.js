@@ -42,6 +42,16 @@ class App extends Component {
     });
   }
 
+  reset() {
+    const numCategories = categories.length;
+    let defaultDecorations = Array(numCategories);
+    defaultDecorations.fill(0);
+
+    this.setState({
+      decorations: defaultDecorations,
+    });
+  }
+
   updateDecoration(decoration) {
     const { state } = this;
 
@@ -60,6 +70,7 @@ class App extends Component {
         <PreviewArea
           decorations={state.decorations}
           randomize={() => this.randomize()}
+          reset={() => this.reset()}
         />
         <DecorationBar
           decorationSelected={state.decorations[state.categorySelected]}

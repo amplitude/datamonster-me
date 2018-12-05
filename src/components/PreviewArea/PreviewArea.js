@@ -42,9 +42,11 @@ class PreviewArea extends Component {
     return (
       <div className="PreviewArea">
         <img className="preview-image" src={state.srcImage} />
-        <a onClick={props.randomize}>Randomize</a>
+        <a onClick={props.randomize}>RANDOM</a>
         <br />
-        <a href={state.srcImage} download>Click to download</a>
+        <a onClick={props.reset}>CLEAR</a>
+        <br />
+        <a href={state.srcImage} download>DOWNLOAD</a>
       </div>
     );
   }
