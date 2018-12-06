@@ -10,7 +10,7 @@ class CategoryBar extends Component {
     const { props } = this;
 
     return (
-      <ul className="CategoryBar">
+      <div className="CategoryBar">
         {categories.map((category, i) => (
           <CategoryItem
             name={category}
@@ -18,7 +18,7 @@ class CategoryBar extends Component {
             onClick={() => props.updateCategory(i)}
           />
         ))}
-      </ul>
+      </div>
     );
   }
 }

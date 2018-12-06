@@ -13,3 +13,23 @@
   background-color: #ffffff;
   box-shadow: 0 5px 5px #c7c7c7;
 }
+
+.chevron {
+  color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 30px;
+  font-size: 32px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.hide {
+  color: white;
+}
