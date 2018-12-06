@@ -62,6 +62,7 @@ class DecorationBar extends Component {
 
           return (
             <DecorationItem
+              key={decoration}
               name={decoration}
               border={i !== 0}
               categoryName={categories[props.categorySelected]}

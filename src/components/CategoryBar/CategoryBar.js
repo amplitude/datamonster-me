@@ -13,6 +13,7 @@ class CategoryBar extends Component {
       <div className="CategoryBar">
         {categories.map((category, i) => (
           <CategoryItem
+            key={category}
             name={category}
             selected={i === props.categorySelected}
             onClick={() => props.updateCategory(i)}
