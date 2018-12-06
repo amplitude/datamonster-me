@@ -11,7 +11,7 @@ class ButtonBar extends Component {
         <a onClick={props.reset}><p>CLEAR</p></a>
         <a onClick={props.randomize}><p>RANDOMIZE</p></a>
         <div style={{flex: 1}} />
-        <a className="finish" href={props.srcImage} download><p>FINISH</p></a>
+        <a className="finish" href={props.srcImage} download><p>DOWNLOAD</p></a>
       </div>
     );
   }

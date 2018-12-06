@@ -15,18 +15,26 @@ class DecorationBar extends Component {
 
   goLeft() {
     const { state } = this;
-    if (state.position > 0) {
-      this.setState({position: state.position - 1});
+
+    let destination = state.position - DISPLAY_LENGTH;
+    if (destination < 0) {
+      destination = 0;
     }
+
+    this.setState({position: destination});
   }
 
   goRight() {
     const { props, state } = this;
 
-    const decorationList = decorations[categories[props.categorySelected]]
-    if (state.position < decorationList.length - DISPLAY_LENGTH) {
-      this.setState({position: state.position + 1});
+    const decorationList = decorations[categories[props.categorySelected]];
+
+    let destination = state.position + DISPLAY_LENGTH;
+    if (destination > decorationList.length - DISPLAY_LENGTH) {
+      destination = decorationList.length - DISPLAY_LENGTH;
     }
+
+    this.setState({position: destination});
   }
 
   componentDidUpdate(prevProps) {

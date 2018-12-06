@@ -1,4 +1,5 @@
 export const categories = [
+  'poses',
   'ears',
   'eyebrows',
   'eyes',
@@ -7,6 +8,12 @@ export const categories = [
 ];
 
 export const decorations = {
+  'poses': [
+    'Hands downArtboard 1@2x',
+    'Both CenterArtboard 1@2x',
+    'Hands upArtboard 1@2x',
+    'Right WaveArtboard 1@2x',
+  ],
   'ears': [
     'ears_default',
     'ears_in',
@@ -29,6 +36,7 @@ export const decorations = {
     'eyes_up',
   ],
   'accessories': [
+    'empty',
     'BowtieAmpBlueArtboard 1@2x',
     'BowtieMintArtboard 1@2x',
     'BowtiePinkArtboard 1@2x',
@@ -36,19 +44,18 @@ export const decorations = {
     'BowtieTealArtboard 1@2x',
     'BowtieTurquoiseArtboard 1@2x',
     'BowtieYellowArtboard 1@2x',
-    'Left BalloonArtboard 1@2x',
-    'Left CoffeeArtboard 1@2x',
-    'Left MicrophoneArtboard 1@2x',
-    'MouthArtboard 1@2x',
     'Right BalloonArtboard 1@2x',
     'Right CoffeeArtboard 1@2x',
     'Right MicrophoneArtboard 1@2x',
+    'MouthArtboard 1@2x',
+    'Tux bodyArtboard 1@2x',
   ],
   'hat': [
+    'empty',
+    'Party HatArtboard 1@2x',
     'Ballcap GiantsArtboard 1@2x',
     'CrownArtboard 1@2x',
     'FezArtboard 1@2x',
     'HeadphonesArtboard 1@2x',
-    'Party HatArtboard 1@2x',
   ],
 }
