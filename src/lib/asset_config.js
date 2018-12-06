@@ -49,6 +49,7 @@ export const decorations = {
     'Right MicrophoneArtboard 1@2x',
     'MouthArtboard 1@2x',
     'Tux bodyArtboard 1@2x',
+    'Shirt_no arms'
   ],
   'hat': [
     'empty',

@@ -17,7 +17,7 @@ class CategoryItem extends Component {
       'selected': props.selected,
     });
 
-    const imgSrc = `assets/${props.name}/${decorations[props.name][0]}.png`;
+    const imgSrc = `assets/${props.name}/icon.png`;
 
     return (
       <div

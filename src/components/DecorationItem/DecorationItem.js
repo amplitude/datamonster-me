@@ -12,7 +12,7 @@ class DecorationItem extends Component {
       'selected': props.selected,
     });
 
-    const imgSrc = `assets/${props.categoryName}/${props.name}.png`;
+    const imgSrc = `assets/${props.categoryName}/${props.name}_icon.png`;
 
     return (
       <div className="DecorationItem" >
@@ -21,7 +21,7 @@ class DecorationItem extends Component {
           className={className}
           onClick={props.onClick}
         >
-          <img className="preview-img" src={imgSrc} />
+          <img className="preview-img decoration" src={imgSrc} />
         </div>
       </div>
     );
