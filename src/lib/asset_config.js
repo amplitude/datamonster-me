@@ -37,17 +37,17 @@ export const decorations = {
   ],
   'accessories': [
     'empty',
-    'BowtieAmpBlueArtboard 1@2x',
-    'BowtieMintArtboard 1@2x',
-    'BowtiePinkArtboard 1@2x',
-    'BowtiePurpleArtboard 1@2x',
-    'BowtieYellowArtboard 1@2x',
     'Right BalloonArtboard 1@2x',
     'Right CoffeeArtboard 1@2x',
     'Right MicrophoneArtboard 1@2x',
     'MouthArtboard 1@2x',
     'Tux bodyArtboard 1@2x',
-    'Shirt_no arms'
+    'Shirt_no arms',
+    'BowtieAmpBlueArtboard 1@2x',
+    'BowtieMintArtboard 1@2x',
+    'BowtiePinkArtboard 1@2x',
+    'BowtiePurpleArtboard 1@2x',
+    'BowtieYellowArtboard 1@2x',
   ],
   'hats': [
     'empty',
