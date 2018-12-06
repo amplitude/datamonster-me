@@ -21,7 +21,7 @@
   align-items: center;
   height: 100%;
   width: 30px;
-  font-size: 32px;
+  font-size: 38px;
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -30,6 +30,14 @@
             user-select: none;
 }
 
+.chevron:hover {
+  color: rgb(80, 79, 79);
+}
+
 .hide {
+  color: white;
+}
+
+.hide:hover {
   color: white;
 }

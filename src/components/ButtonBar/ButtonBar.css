@@ -12,7 +12,15 @@ a {
   margin-bottom: 0;
 }
 
+a:hover {
+  color: rgb(56, 67, 78);
+}
+
 a.finish {
   color: #007FD2;
   margin-right: 30px;
+}
+
+a.finish:hover {
+  color: rgb(1, 91, 151);
 }
