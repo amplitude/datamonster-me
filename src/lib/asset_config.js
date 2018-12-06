@@ -4,7 +4,7 @@ export const categories = [
   'eyebrows',
   'eyes',
   'accessories',
-  'hat',
+  'hats',
 ];
 
 export const decorations = {
@@ -41,8 +41,6 @@ export const decorations = {
     'BowtieMintArtboard 1@2x',
     'BowtiePinkArtboard 1@2x',
     'BowtiePurpleArtboard 1@2x',
-    'BowtieTealArtboard 1@2x',
-    'BowtieTurquoiseArtboard 1@2x',
     'BowtieYellowArtboard 1@2x',
     'Right BalloonArtboard 1@2x',
     'Right CoffeeArtboard 1@2x',
@@ -51,7 +49,7 @@ export const decorations = {
     'Tux bodyArtboard 1@2x',
     'Shirt_no arms'
   ],
-  'hat': [
+  'hats': [
     'empty',
     'Party HatArtboard 1@2x',
     'Ballcap GiantsArtboard 1@2x',
