@@ -12,7 +12,7 @@ export const decorations = {
     'Hands downArtboard 1@2x',
     'Both CenterArtboard 1@2x',
     'Hands upArtboard 1@2x',
-    'Right WaveArtboard 1@2x',
+    'RIght WaveArtboard 1@2x',
   ],
   'ears': [
     'ears_default',
