@@ -39,7 +39,11 @@ class PreviewArea extends Component {
 
     return (
       <div className="PreviewArea">
-        <img className="preview-image" src={props.srcImg} />
+        {props.srcImg && <img
+          className="preview-image"
+          src={props.srcImg}
+          alt='Datamonster preview' />
+        }
       </div>
     );
   }

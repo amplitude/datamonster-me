@@ -21,7 +21,10 @@ class DecorationItem extends Component {
           className={className}
           onClick={props.onClick}
         >
-          <img className="preview-img decoration" src={imgSrc} />
+          <img
+            className="preview-img decoration"
+            src={imgSrc}
+            alt={props.name} />
         </div>
       </div>
     );
