@@ -28,8 +28,10 @@ class PreviewArea extends Component {
     this.setSrcImage();
   }
 
-  componentDidUpdate() {
-    this.setSrcImage();
+  componentDidUpdate(prevProps) {
+    if (prevProps.decorations !== this.props.decorations) {
+      this.setSrcImage();
+    }
   }
 
   render() {
