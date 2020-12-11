@@ -72,19 +72,31 @@ class App extends Component {
       // If not the active cateogry, don't change
       if (categoryIndex !== state.categorySelected) {
         return selections
+      }
 
       // If the category doesn't support multiselect, set the value directly
-      } else if (!this.categorySupportsMultiSelect(categoryIndex)) {
+      if (!this.categorySupportsMultiSelect(categoryIndex)) {
         return [ choice ]
+      }
+
+      // Is a multiselect category and the clear button clicked, select only
+      // the clear icon. Otherwise, make sure the clear button is removed
+      let choices = selections
+      if (choice == 0) {
+        return [ 0 ]
+      } else {
+        choices = choices.filter(selection => selection !== 0)
+      }
 
       // If this decoration is already selected, remove it
-      } else if (selections && selections.includes(choice)) {
-       return selections.filter(selection => selection != choice)
-
-      // Add the choice to the list of selections
-      } else {
-        return [ ...selections, choice ]
+      if (choices.includes(choice)) {
+        choices = choices.filter(selection => selection != choice)
+        if (choices.length == 0) return [ 0 ] // Choose clear icon
+        return choices
       }
+
+      // Else, add the choice to the list of choices
+      return [ ...choices, choice ]
     })
 
     this.setState({ decorations });

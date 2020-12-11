@@ -11,14 +11,13 @@
   cursor: pointer;
 }
 
-.CategoryItem:hover {
-  background-color: #9eaab6;
-  border-color: var(--blue);
+.CategoryItem:hover:not(.selected) {
+  border-color: var(--grey-highlight);
 }
 
 .CategoryItem.selected {
   background-color: #9eaab6;
-  border-color: var(--blue-highlight);
+  border-color: var(--blue);
 }
 
 .preview-img {

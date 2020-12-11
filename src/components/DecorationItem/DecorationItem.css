@@ -21,10 +21,10 @@
   cursor: pointer;
 }
 
-.DecorationCircle:hover {
-  border-color: var(--blue);
+.DecorationCircle:hover:not(.selected) {
+  border-color: var(--grey-highlight);
 }
 
 .DecorationCircle.selected {
-  border-color: var(--blue-highlight);
+  border-color: var(--blue);
 }
