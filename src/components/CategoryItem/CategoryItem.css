@@ -7,6 +7,8 @@
   background-color: #e3e7ea;
   border:2px solid #e3e7ea;
   text-align: center;
+
+  cursor: pointer;
 }
 
 .CategoryItem:hover {

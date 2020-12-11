@@ -18,6 +18,7 @@
   text-align: center;
 
   border:2px solid white;
+  cursor: pointer;
 }
 
 .DecorationCircle:hover {
