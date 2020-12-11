@@ -6,7 +6,7 @@ import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
 import TopBar from './components/TopBar/TopBar';
 
-import { categories, decorations } from './lib/asset_config';
+import { categories, decorations, multiSelectCategories } from './lib/asset_config';
 
 import './App.css';
 
@@ -14,15 +14,20 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const numCategories = categories.length;
-    let defaultDecorations = Array(numCategories);
-    defaultDecorations.fill(0);
+
 
     this.state = {
       categorySelected: 0,
-      decorations: defaultDecorations,
+      decorations: this.makeEmptyDecorationsArray(),
       srcImg: null,
     }
+  }
+
+  makeEmptyDecorationsArray() {
+    const numCategories = categories.length;
+    let defaultDecorations = Array(numCategories);
+    defaultDecorations.fill([ 0 ]);
+    return defaultDecorations
   }
 
   updateCategory(category) {
@@ -32,16 +37,11 @@ class App extends Component {
   }
 
   randomize() {
-    const numCategories = categories.length;
-    let randomDecorations = Array(numCategories);
-    randomDecorations.fill(0);
-    for (let i = 0; i < categories.length; i++) {
-      const numDecorations = decorations[categories[i]].length;
-      randomDecorations[i] = Math.floor(Math.random() * numDecorations);
-    }
-
     this.setState({
-      decorations: randomDecorations,
+      decorations: this.makeEmptyDecorationsArray().map(function(val, i) {
+        const numDecorations = decorations[categories[i]].length
+        return [Math.floor(Math.random() * numDecorations)]
+      }),
     });
   }
 
@@ -59,11 +59,32 @@ class App extends Component {
     this.setState({srcImg: img});
   }
 
-  updateDecoration(decoration) {
+  categorySupportsMultiSelect(index) {
+    return multiSelectCategories.includes(Object.keys(decorations)[index])
+  }
+
+  updateDecoration(choice) {
     const { state } = this;
 
-    const decorations = state.decorations.map((elem, i) => {
-      return i === state.categorySelected ? decoration : elem;
+    // Loop thrrough the selections of a decoration category
+    const decorations = state.decorations.map((selections, categoryIndex) => {
+
+      // If not the active cateogry, don't change
+      if (categoryIndex !== state.categorySelected) {
+        return selections
+
+      // If the category doesn't support multiselect, set the value directly
+      } else if (!this.categorySupportsMultiSelect(categoryIndex)) {
+        return [ choice ]
+
+      // If this decoration is already selected, remove it
+      } else if (selections && selections.includes(choice)) {
+       return selections.filter(selection => selection != choice)
+
+      // Add the choice to the list of selections
+      } else {
+        return [ ...selections, choice ]
+      }
     })
 
     this.setState({ decorations });

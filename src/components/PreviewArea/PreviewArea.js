@@ -9,14 +9,20 @@ class PreviewArea extends Component {
   setSrcImage() {
     const { props } = this;
 
-    const base_image = ['assets/base_datamonster_tail_left.png']
-    const decoration_images = props.decorations.map((decoration, category) => {
-      const categoryName = categories[category];
-      const decorationName = decorations[categoryName][decoration];
-      return `assets/${categoryName}/${decorationName}.png`
-    });
+    const baseImage = ['assets/base_datamonster_tail_left.png']
 
-    const images = base_image.concat(decoration_images);
+    // Build a list of the paths to all selected images
+    const decorationImages = props.decorations
+    .reduce((images, selections, categoryIndex) => {
+      selections.forEach(selectionIndex => {
+        const categoryName = categories[categoryIndex];
+        const decorationName = decorations[categoryName][selectionIndex];
+        images.push(`assets/${categoryName}/${decorationName}.png`)
+      })
+      return images
+    }, [])
+
+    const images = baseImage.concat(decorationImages);
 
     mergeImages(images)
       .then(src => {

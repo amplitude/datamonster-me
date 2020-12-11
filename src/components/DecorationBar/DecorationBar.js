@@ -43,6 +43,14 @@ class DecorationBar extends Component {
     }
   }
 
+  // Determine if a decoration item should be marked as selected
+  isSelected(decorationNum) {
+    const { props } = this;
+    if (Array.isArray(props.decorationSelected)) {
+      return props.decorationSelected.includes(decorationNum)
+    } else return decorationNum === props.decorationSelected
+  }
+
   render() {
     const { props, state } = this;
 
@@ -66,12 +74,15 @@ class DecorationBar extends Component {
               name={decoration}
               border={i !== 0}
               categoryName={categories[props.categorySelected]}
-              selected={decorationNum === props.decorationSelected}
+              selected={this.isSelected(decorationNum)}
               onClick={() => props.updateDecoration(decorationNum)}
             />);
           })}
         <div
-          className={classNames({chevron: true, hide: state.position >= decorationList.length - DISPLAY_LENGTH})}
+          className={classNames({
+            chevron: true,
+            hide: state.position >= decorationList.length - DISPLAY_LENGTH,
+          })}
           onClick={() => this.goRight()}
         >
           ›

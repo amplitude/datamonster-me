@@ -7,6 +7,10 @@ export const categories = [
   'hats',
 ];
 
+export const multiSelectCategories = [
+  'accessories',
+]
+
 export const decorations = {
   'poses': [
     'Hands downArtboard 1@2x',
