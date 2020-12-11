@@ -14,8 +14,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-
-
     this.state = {
       categorySelected: 0,
       decorations: this.makeEmptyDecorationsArray(),
@@ -46,12 +44,8 @@ class App extends Component {
   }
 
   reset() {
-    const numCategories = categories.length;
-    let defaultDecorations = Array(numCategories);
-    defaultDecorations.fill(0);
-
     this.setState({
-      decorations: defaultDecorations,
+      decorations: this.makeEmptyDecorationsArray(),
     });
   }
 
