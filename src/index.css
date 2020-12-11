@@ -15,3 +15,11 @@ code {
 a {
   cursor: pointer;
 }
+
+/* Set shared vars */
+:root {
+  --blue: #10069F;
+  --blue-highlight: #1709E9;
+  --grey: #354858;
+  --grey-highlight: #5C6F83;
+}

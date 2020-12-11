@@ -22,9 +22,9 @@
 }
 
 .DecorationCircle:hover {
-  border-color: #1285d0;
+  border-color: var(--blue);
 }
 
 .DecorationCircle.selected {
-  border-color: #1285d0;
+  border-color: var(--blue-highlight);
 }

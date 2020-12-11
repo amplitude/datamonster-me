@@ -4,23 +4,26 @@
   display: flex;
   align-items: flex-end;
 }
+
 a {
   font-weight: bold;
-  color: #5C6F83;
+  color: var(--grey);
   text-decoration: none;
   margin-left: 30px;
   margin-bottom: 0;
+  transition: color 0.3s;
 }
 
 a:hover {
-  color: rgb(56, 67, 78);
+  color: var(--grey-highlight);
+  transition-duration: .1s;
 }
 
 a.finish {
-  color: #007FD2;
+  color: var(--blue);
   margin-right: 30px;
 }
 
 a.finish:hover {
-  color: rgb(1, 91, 151);
+  color: var(--blue-highlight);
 }

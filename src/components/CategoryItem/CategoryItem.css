@@ -13,12 +13,12 @@
 
 .CategoryItem:hover {
   background-color: #9eaab6;
-  border-color: #1285d0;
+  border-color: var(--blue);
 }
 
 .CategoryItem.selected {
   background-color: #9eaab6;
-  border-color: #1285d0;
+  border-color: var(--blue-highlight);
 }
 
 .preview-img {
