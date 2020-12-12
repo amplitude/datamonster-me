@@ -13,6 +13,11 @@ class DecorationBar extends Component {
     position: 0,
   }
 
+  getDecorationsList() {
+    const { props } = this;
+    return decorations[categories[props.categorySelected]].flat()
+  }
+
   goLeft() {
     const { state } = this;
 
@@ -25,9 +30,9 @@ class DecorationBar extends Component {
   }
 
   goRight() {
-    const { props, state } = this;
+    const { state } = this;
 
-    const decorationList = decorations[categories[props.categorySelected]];
+    const decorationList = this.getDecorationsList()
 
     let destination = state.position + DISPLAY_LENGTH;
     if (destination > decorationList.length - DISPLAY_LENGTH) {
@@ -54,7 +59,7 @@ class DecorationBar extends Component {
   render() {
     const { props, state } = this;
 
-    const decorationList = decorations[categories[props.categorySelected]].flat()
+    const decorationList = this.getDecorationsList()
 
     const displayList = decorationList.slice(state.position, state.position + DISPLAY_LENGTH);
 
