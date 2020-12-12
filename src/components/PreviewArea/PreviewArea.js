@@ -16,7 +16,7 @@ class PreviewArea extends Component {
     .reduce((images, selections, categoryIndex) => {
       selections.forEach(selectionIndex => {
         const categoryName = categories[categoryIndex];
-        const decorationName = decorations[categoryName][selectionIndex];
+        const decorationName = decorations[categoryName].flat()[selectionIndex]
         images.push(`assets/${categoryName}/${decorationName}.png`)
       })
       return images

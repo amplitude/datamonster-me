@@ -54,7 +54,8 @@ class DecorationBar extends Component {
   render() {
     const { props, state } = this;
 
-    const decorationList = decorations[categories[props.categorySelected]]
+    const decorationList = decorations[categories[props.categorySelected]].flat()
+
     const displayList = decorationList.slice(state.position, state.position + DISPLAY_LENGTH);
 
     return (

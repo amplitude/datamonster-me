@@ -7,10 +7,8 @@ export const categories = [
   'hats',
 ];
 
-export const multiSelectCategories = [
-  'accessories',
-]
-
+// The nested arrays under categories is used to group mutually exclusive
+// items.
 export const decorations = {
   'poses': [
     'Hands downArtboard 1@2x',
@@ -41,17 +39,23 @@ export const decorations = {
   ],
   'accessories': [
     'empty',
-    'Right BalloonArtboard 1@2x',
-    'Right CoffeeArtboard 1@2x',
-    'Right MicrophoneArtboard 1@2x',
+    [
+      'Right BalloonArtboard 1@2x',
+      'Right CoffeeArtboard 1@2x',
+      'Right MicrophoneArtboard 1@2x',
+    ],
     'MouthArtboard 1@2x',
-    'Tux bodyArtboard 1@2x',
-    'Shirt_no arms',
-    'BowtieAmpBlueArtboard 1@2x',
-    'BowtieMintArtboard 1@2x',
-    'BowtiePinkArtboard 1@2x',
-    'BowtiePurpleArtboard 1@2x',
-    'BowtieYellowArtboard 1@2x',
+    [
+      'Tux bodyArtboard 1@2x',
+      'Shirt_no arms',
+    ],
+    [
+      'BowtieAmpBlueArtboard 1@2x',
+      'BowtieMintArtboard 1@2x',
+      'BowtiePinkArtboard 1@2x',
+      'BowtiePurpleArtboard 1@2x',
+      'BowtieYellowArtboard 1@2x',
+    ],
   ],
   'hats': [
     'empty',
@@ -62,3 +66,27 @@ export const decorations = {
     'HeadphonesArtboard 1@2x',
   ],
 }
+
+// Loop through decorations and make an object that can be used to easily
+// get the multi select indexes of ones siblings
+export const mutuallyExclusiveDecorations = Object.values(decorations)
+.map((decorations) => {
+  return decorations.flat().map((filename) => {
+
+    // If this decoration is an array, meaning it's a list of mutually
+    // exclusive choices, then return just the siblings (not oneself)
+    // console.log('decoration', decoration)
+    for (const [offset, decoration] of decorations.entries()) {
+      if (Array.isArray(decoration) && decoration.includes(filename)) {
+        return decoration.reduce((siblingIndexes, sibling, index) => {
+          if (sibling === filename) return siblingIndexes
+          return [...siblingIndexes, index + offset]
+        }, [])
+      }
+    }
+
+    // Flat filename not found nested in a mutually exlcusive array so no
+    // siblings need to be disabled when it's activated
+    return [];
+  })
+}, [])

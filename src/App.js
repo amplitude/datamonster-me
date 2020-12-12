@@ -6,7 +6,11 @@ import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
 import TopBar from './components/TopBar/TopBar';
 
-import { categories, decorations, multiSelectCategories } from './lib/asset_config';
+import {
+  categories,
+  decorations,
+  mutuallyExclusiveDecorations
+} from './lib/asset_config';
 
 import './App.css';
 
@@ -53,8 +57,12 @@ class App extends Component {
     this.setState({srcImg: img});
   }
 
-  categorySupportsMultiSelect(index) {
-    return multiSelectCategories.includes(Object.keys(decorations)[index])
+  // A decoration cateogry supports multi select if there is more than one
+  // level of depth.
+  categorySupportsMultiSelect(categoryIndex) {
+    return !!Object.values(decorations)[categoryIndex].find(decoration => {
+      return Array.isArray(decoration)
+    })
   }
 
   updateDecoration(choice) {
@@ -89,7 +97,11 @@ class App extends Component {
         return choices
       }
 
-      // Else, add the choice to the list of choices
+      // Deselect sibling choices
+      const siblings = mutuallyExclusiveDecorations[categoryIndex][choice]
+      choices = choices.filter(selection => !siblings.includes(selection))
+
+      // Add the choice to the list of choices
       return [ ...choices, choice ]
     })
 
