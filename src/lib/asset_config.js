@@ -76,11 +76,14 @@ export const mutuallyExclusiveDecorations = Object.values(decorations)
     // If this decoration is an array, meaning it's a list of mutually
     // exclusive choices, then return just the siblings (not oneself)
     // console.log('decoration', decoration)
-    for (const [offset, decoration] of decorations.entries()) {
+    for (const decoration of decorations) {
       if (Array.isArray(decoration) && decoration.includes(filename)) {
-        return decoration.reduce((siblingIndexes, sibling, index) => {
+        return decoration.reduce((siblingIndexes, sibling) => {
           if (sibling === filename) return siblingIndexes
-          return [...siblingIndexes, index + offset]
+          return [
+            ...siblingIndexes,
+            decorations.flat().findIndex(test => sibling === test),
+          ]
         }, [])
       }
     }
