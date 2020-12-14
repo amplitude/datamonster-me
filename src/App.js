@@ -18,10 +18,14 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    const decorations = this.makeEmptyDecorationsArray()
+
     this.state = {
-      categorySelected: 0,
-      decorations: this.makeEmptyDecorationsArray(),
       srcImg: null,
+      categorySelected: 0,
+      decorations,
+      history: [ decorations ],
+      historyIndex: 0,
     }
   }
 
@@ -39,18 +43,16 @@ class App extends Component {
   }
 
   randomize() {
-    this.setState({
-      decorations: this.makeEmptyDecorationsArray().map(function(val, i) {
+    this.addHistoryState(
+      this.makeEmptyDecorationsArray().map(function(val, i) {
         const numDecorations = decorations[categories[i]].length
         return [Math.floor(Math.random() * numDecorations)]
       }),
-    });
+    )
   }
 
   reset() {
-    this.setState({
-      decorations: this.makeEmptyDecorationsArray(),
-    });
+    this.addHistoryState(this.makeEmptyDecorationsArray());
   }
 
   setSrcImg(img) {
@@ -105,16 +107,49 @@ class App extends Component {
       return [ ...choices, choice ]
     })
 
-    this.setState({ decorations });
+    this.addHistoryState(decorations)
+  }
+
+  addHistoryState(decorations) {
+    const { state } = this,
+      newIndex = state.historyIndex + 1
+    this.setState({
+      decorations,
+      history: state.history.slice(0, newIndex).concat([ decorations ]),
+      historyIndex: newIndex,
+    });
+  }
+
+  undo() {
+    this.gotoHistoryIndex(this.state.historyIndex - 1)
+  }
+
+  redo() {
+    this.gotoHistoryIndex(this.state.historyIndex + 1)
+  }
+
+  gotoHistoryIndex(index) {
+    this.setState({
+      decorations: this.state.history[index],
+      historyIndex: index,
+    })
   }
 
   render() {
     const { state } = this;
 
+    // Determine whether to show undo and redo
+    const hasUndo = state.historyIndex > 0,
+      hasRedo = state.historyIndex < state.history.length - 1
+
     return (
       <div className="App">
         <TopBar />
         <ButtonBar
+          undo={() => this.undo()}
+          hasUndo={hasUndo}
+          redo={() => this.redo()}
+          hasRedo={hasRedo}
           randomize={() => this.randomize()}
           reset={() => this.reset()}
           srcImg={state.srcImg}

@@ -8,6 +8,8 @@ class ButtonBar extends Component {
 
     return (
       <div className="ButtonBar">
+        { props.hasUndo && (<a onClick={props.undo}><p>UNDO</p></a>)}
+        { props.hasRedo && (<a onClick={props.redo}><p>REDO</p></a>)}
         <a onClick={props.reset}><p>CLEAR</p></a>
         <a onClick={props.randomize}><p>RANDOMIZE</p></a>
         <div style={{flex: 1}} />
