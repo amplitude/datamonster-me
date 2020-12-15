@@ -3,11 +3,17 @@
  */
 
 import { categories, decorations } from './asset-config'
-import mergeImages from 'merge-images';
 
-// Take the user's choices and make the image. Supports the Canvas and Image
-// instances to be passed in when used from Node as part of the share lambda.
-export function makeComposite(choices, { Canvas, Image } = {}) {
+// Had to use this v2 fork to get compatibility with node-canvas 2 which is
+// what is used on the lambda
+import mergeImages from 'merge-images-v2';
+
+// Take the user's choices and make the image. Supports the Canvas instance to
+// be passed in when used from Node as part of the share lambda.
+export function makeComposite(choices, {
+	Canvas,
+	assetsDir = 'assets',
+ } = {}) {
 
 	// Build a list of the paths to all selected images
 	const decorationImages = choices
@@ -15,15 +21,15 @@ export function makeComposite(choices, { Canvas, Image } = {}) {
 		selections.forEach(selectionIndex => {
 			const categoryName = categories[categoryIndex];
 			const decorationName = decorations[categoryName].flat()[selectionIndex]
-			images.push(`assets/${categoryName}/${decorationName}.png`)
+			images.push(`${assetsDir}/${categoryName}/${decorationName}.png`)
 		})
 		return images
 	}, [])
 
 	// Append the choices to the base image
-	const images = ['assets/base_datamonster_tail_left.png']
+	const images = [`${assetsDir}/base_datamonster_tail_left.png`]
 		.concat(decorationImages)
 
 	// Returns a promise
-	return mergeImages(images, { Canvas, Image })
+	return mergeImages(images, { Canvas })
 }

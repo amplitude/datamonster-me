@@ -5,21 +5,22 @@
   "dependencies": {
     "canvas": "^2.6.1",
     "classnames": "^2.2.6",
-    "merge-images": "^1.1.0",
+    "merge-images-v2": "^2.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
   },
   "devDependencies": {
-    "webpack": "4.19.1",
-    "webpack-cli": "^4.2.0"
+    "@rollup/plugin-node-resolve": "^11.0.1",
+    "rollup": "^2.35.1",
+    "webpack": "4.19.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "package": "rm -f lambda.zip && webpack --entry ./src/share.js --output-path ./ --output-filename index.js && zip share-lambda.zip index.js public/assets && rm index.js"
+    "package": "rm -f share-lambda.zip && npx rollup -c && zip -qr share-lambda.zip index.js public/assets && rm -f index.js"
   },
   "eslintConfig": {
     "extends": "react-app"

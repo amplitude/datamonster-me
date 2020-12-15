@@ -25,3 +25,4 @@ yarn-error.log*
 # Don't commit the build lambda
 share-lambda.js
 share-lambda.zip
+/index.js
