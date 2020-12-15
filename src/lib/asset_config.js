@@ -75,7 +75,6 @@ export const mutuallyExclusiveDecorations = Object.values(decorations)
 
     // If this decoration is an array, meaning it's a list of mutually
     // exclusive choices, then return just the siblings (not oneself)
-    // console.log('decoration', decoration)
     for (const decoration of decorations) {
       if (Array.isArray(decoration) && decoration.includes(filename)) {
         return decoration.reduce((siblingIndexes, sibling) => {
