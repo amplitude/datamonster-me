@@ -22,9 +22,15 @@ exports.handler = async (event) => {
 		assetsDir: path.join(__dirname, 'public/assets'),
 	})
 
+	// Remove the "data:... prefix"
+	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+	const dataWithoutPrefix = data.replace(/^[^,]+,/, '')
+
 	// Return it
 	return {
 		statusCode: 200,
-		body: data,
+		headers: { 'Content-Type': 'image/png' },
+		isBase64Encoded: true,
+		body: dataWithoutPrefix
 	}
 }
