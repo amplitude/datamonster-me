@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import DecorationItem from '../DecorationItem/DecorationItem';
-import { categories, decorations } from '../../lib/asset_config'
+import { categories, decorations } from '../../lib/asset-config'
 
 import './DecorationBar.css';
 

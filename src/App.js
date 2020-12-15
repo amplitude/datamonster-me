@@ -10,7 +10,7 @@ import {
   categories,
   decorations,
   mutuallyExclusiveDecorations
-} from './lib/asset_config';
+} from './lib/asset-config';
 
 import './App.css';
 
