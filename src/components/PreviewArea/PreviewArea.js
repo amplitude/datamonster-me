@@ -1,33 +1,14 @@
 import React, { Component } from 'react';
-import mergeImages from 'merge-images';
 
-import { categories, decorations } from '../../lib/asset_config'
+import { makeComposite } from '../../lib/image-processor'
 
 import './PreviewArea.css';
 
 class PreviewArea extends Component {
-  setSrcImage() {
+
+  async setSrcImage() {
     const { props } = this;
-
-    const baseImage = ['assets/base_datamonster_tail_left.png']
-
-    // Build a list of the paths to all selected images
-    const decorationImages = props.decorations
-    .reduce((images, selections, categoryIndex) => {
-      selections.forEach(selectionIndex => {
-        const categoryName = categories[categoryIndex];
-        const decorationName = decorations[categoryName].flat()[selectionIndex]
-        images.push(`assets/${categoryName}/${decorationName}.png`)
-      })
-      return images
-    }, [])
-
-    const images = baseImage.concat(decorationImages);
-
-    mergeImages(images)
-      .then(src => {
-        props.setSrcImg(src);
-      });
+    props.setSrcImg(await makeComposite(props.decorations))
   }
 
   componentDidMount() {
