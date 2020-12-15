@@ -22,4 +22,9 @@ a {
   --blue-highlight: #1709E9;
   --grey: #354858;
   --grey-highlight: #9eaab6;
+
+}
+
+* {
+  outline-color: var(--blue);
 }

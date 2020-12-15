@@ -151,7 +151,8 @@ class App extends Component {
           redo={() => this.redo()}
           hasRedo={hasRedo}
           randomize={() => this.randomize()}
-          reset={() => this.reset()}
+          reset={() => this.reset() }
+          choices={state.decorations }
           srcImg={state.srcImg}
         />
         <PreviewArea
