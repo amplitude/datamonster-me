@@ -12,7 +12,7 @@ class DecorationItem extends Component {
       'selected': props.selected,
     });
 
-    const imgSrc = `assets/${props.categoryName}/${props.name}_icon.png`;
+    const imgSrc = `assets/${props.categoryName}/${props.name}_icon.svg`;
 
     return (
       <div className="DecorationItem" >

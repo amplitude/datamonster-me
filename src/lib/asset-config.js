@@ -1,71 +1,65 @@
-export const categories = [
-  'poses',
-  'ears',
-  'eyebrows',
-  'eyes',
-  'accessories',
-  'hats',
-];
-
 // The nested arrays under categories is used to group mutually exclusive
-// items.
+// items
 export const decorations = {
-  'poses': [
-    'Hands downArtboard 1@2x',
-    'Both CenterArtboard 1@2x',
-    'Hands upArtboard 1@2x',
-    'RIght WaveArtboard 1@2x',
-  ],
-  'ears': [
-    'ears_default',
-    'ears_in',
-    'ears_out',
-  ],
-  'eyebrows': [
-    'eyebrows_default',
-    'eyebrows_angry',
-    'eyebrows_distraught',
-  ],
-  'eyes': [
-    'eyes_default',
-    'eyes_down',
-    'eyes_left',
-    'eyes_left diagonal down',
-    'eyes_left diagonal up',
-    'eyes_right',
-    'eyes_right diagonal down',
-    'eyes_right diagonal up',
-    'eyes_up',
-  ],
-  'accessories': [
+  'hair': [
     'empty',
-    [
-      'Right BalloonArtboard 1@2x',
-      'Right CoffeeArtboard 1@2x',
-      'Right MicrophoneArtboard 1@2x',
-    ],
-    'MouthArtboard 1@2x',
-    [
-      'Tux bodyArtboard 1@2x',
-      'Shirt_no arms',
-    ],
-    [
-      'BowtieAmpBlueArtboard 1@2x',
-      'BowtieMintArtboard 1@2x',
-      'BowtiePinkArtboard 1@2x',
-      'BowtiePurpleArtboard 1@2x',
-      'BowtieYellowArtboard 1@2x',
-    ],
+    ['Moustache_Hero Artboard1x'],
+    ['MulletHero Artboard1x'],
   ],
   'hats': [
     'empty',
-    'Party HatArtboard 1@2x',
-    'Ballcap GiantsArtboard 1@2x',
-    'CrownArtboard 1@2x',
-    'FezArtboard 1@2x',
-    'HeadphonesArtboard 1@2x',
+    'PartyHat1_Hero Artboard1x',
+    'BallCap_Hero Artboard1x',
+    'ChefsHat_Hero Artboard1x',
+    'Cowboy Hat_Hero Artboard1x',
+    'FlowerCrown_Hero Artboard1x',
+    'Headphones_Hero Artboard1x',
   ],
+  'tops': [
+    'empty',
+    'Shirt1Hero Artboard1x',
+    'TigerShirt_Hero Artboard1x',
+  ],
+  'bottoms': [
+    'empty',
+    'Jeans1_Hero Artboard1x',
+    'Jeans2_Hero Artboard1x',
+  ],
+  'onesies': [
+    'empty',
+    'DragonOnesieHero Artboard1x',
+    'UnicornOnesie_Hero Artboard1x',
+    'UntitledGooseHero Artboard1x',
+  ],
+  'accessories': [
+    'empty',
+    'Apron_Hero Artboard1x',
+    '3DGlasses_Hero Artboard1x',
+    [
+      'Balloons_Hero Artboard1x',
+      'Boba_Hero Artboard1x',
+      'Chocolate_Hero Artboard1x',
+      'CoffeCup_Hero Artboard1x',
+      'CoffeeMug_Hero Artboard1x',
+      'Cola_Hero Artboard1x',
+      'DOUGHNUT_Hero Artboard1x',
+      'Flamingo FLoatieHero Artboard1x',
+      'Microphone_Hero Artboard1x',
+      'Popcorn_Hero Artboard1x',
+      'Record_Hero Artboard1x',
+      'Stroopwafel_Hero Artboard1x',
+    ],
+    [
+      'Laptop_Hero Artboard1x',
+      'StuffedTiger_Hero Artboard1x',
+    ],
+    'Insight_Hero Artboard1x',
+  ],
+
 }
+
+// Decorations keys are ordered category names
+export const categories = Object.keys(decorations)
 
 // Loop through decorations and make an object that can be used to easily
 // get the multi select indexes of ones siblings
