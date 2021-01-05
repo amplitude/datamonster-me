@@ -21,9 +21,10 @@
 }
 
 .preview-img {
-  height: 100%;
+  width: 60px;
+  margin: 10px auto;
 }
 
 p.category {
-  margin-top: 20px;
+  margin-top: 10px;
 }
