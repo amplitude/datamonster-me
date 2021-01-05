@@ -43,9 +43,16 @@ class App extends Component {
   }
 
   randomize() {
+    const showOnesie = Math.random() > 0.5
     this.addHistoryState(
       this.makeEmptyDecorationsArray().map(function(val, i) {
         const numDecorations = decorations[categories[i]].length
+
+        // Don't allow onesie and hat at the same time
+        if (showOnesie && categories[i] == 'hats') return [0]
+        else if (!showOnesie && categories[i] == 'onesies') return [0]
+
+        // Choose a random entry
         return [Math.floor(Math.random() * numDecorations)]
       }),
     )
@@ -73,7 +80,7 @@ class App extends Component {
     // Loop thrrough the selections of a decoration category
     const decorations = state.decorations.map((selections, categoryIndex) => {
 
-      // If not the active cateogry, don't change
+      // If not the active category, don't change
       if (categoryIndex !== state.categorySelected) {
         return selections
       }
@@ -107,6 +114,15 @@ class App extends Component {
       return [ ...choices, choice ]
     })
 
+    // If the category is onesies or hats, clear the other choices
+    const selectedCategoryName = categories[state.categorySelected]
+    if (selectedCategoryName == 'hats') {
+      decorations[categories.findIndex(cat => cat == 'onesies')] = [0]
+    } else if (selectedCategoryName == 'onesies') {
+      decorations[categories.findIndex(cat => cat == 'hats')] = [0]
+    }
+
+    // Store the new set of selected categories
     this.addHistoryState(decorations)
   }
 
