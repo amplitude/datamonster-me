@@ -21,20 +21,18 @@ export function makeComposite(choices, {
 		selections.forEach(selectionIndex => {
 			const categoryName = categories[categoryIndex];
 			const decorationName = decorations[categoryName].flat()[selectionIndex]
-			images.push(`${assetsDir}/${categoryName}/${decorationName}.svg`)
+			images.push(`${assetsDir}/${categoryName}/${decorationName}.png`)
 		})
 		return images
 	}, [])
 
 	// Append the choices to the base image
-	const images = [`${assetsDir}/poses/DatamonsterBase1_Hero Artboard1x.svg`]
+	const images = [`${assetsDir}/poses/DatamonsterBase1_Hero Artboard1x.png`]
 		.concat(decorationImages)
 
 	// Returns a promise
 	return mergeImages(images, {
 		Canvas,
-
-		// Specify dimensions explicitly because it has trouble detecting SVG size
 		width: 936,
 		height: 880,
 	})
