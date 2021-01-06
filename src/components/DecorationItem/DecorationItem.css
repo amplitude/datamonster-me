@@ -18,12 +18,13 @@
   text-align: center;
 
   border:2px solid white;
+  cursor: pointer;
 }
 
-.DecorationCircle:hover {
-  border-color: #1285d0;
+.DecorationCircle:hover:not(.selected) {
+  border-color: var(--grey-highlight);
 }
 
 .DecorationCircle.selected {
-  border-color: #1285d0;
+  border-color: var(--blue);
 }

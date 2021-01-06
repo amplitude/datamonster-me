@@ -7,22 +7,24 @@
   background-color: #e3e7ea;
   border:2px solid #e3e7ea;
   text-align: center;
+
+  cursor: pointer;
 }
 
-.CategoryItem:hover {
-  background-color: #9eaab6;
-  border-color: #1285d0;
+.CategoryItem:hover:not(.selected) {
+  border-color: var(--grey-highlight);
 }
 
 .CategoryItem.selected {
   background-color: #9eaab6;
-  border-color: #1285d0;
+  border-color: var(--blue);
 }
 
 .preview-img {
-  height: 100%;
+  width: 60px;
+  margin: 10px auto;
 }
 
 p.category {
-  margin-top: 20px;
+  margin-top: 10px;
 }

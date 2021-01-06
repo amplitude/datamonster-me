@@ -4,23 +4,88 @@
   display: flex;
   align-items: flex-end;
 }
+
 a {
   font-weight: bold;
-  color: #5C6F83;
+  color: var(--grey);
   text-decoration: none;
+
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--grey-highlight);
+  transition-duration: .1s;
+}
+
+a.finish {
+  color: var(--blue);
+}
+
+a.finish:hover {
+  color: var(--blue-highlight);
+}
+
+.ButtonBar > * {
   margin-left: 30px;
   margin-bottom: 0;
 }
 
-a:hover {
-  color: rgb(56, 67, 78);
-}
-
-a.finish {
-  color: #007FD2;
+.ButtonBar > *:last-child {
   margin-right: 30px;
 }
 
-a.finish:hover {
-  color: rgb(1, 91, 151);
+.share-container {
+  position: relative;
+  display: inline-block;
+}
+
+.share-tooltip {
+  position: absolute;
+  z-index: 1;
+  top: calc(100% - 1em + 5px);
+  right: 0;
+  display: flex;
+  padding: 5px;
+
+  /* Match the decoration bar styling */
+  background: white;
+  box-shadow: 0 5px 5px #c7c7c7;
+  border-radius: 5px;
+}
+
+/* Triangle */
+.share-tooltip:after {
+  content: '';
+  width: 0;
+	height: 0;
+	background: 0;
+  border-style: solid;
+  border-width: 0 4px 5px 4px;
+  border-color: transparent transparent white transparent;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  transform: translateY(-100%);
+}
+
+.share-tooltip input {
+  border: 1px solid #E3E7EA;
+  border-right: none;
+  padding: 5px;
+  border-radius: 2px 0 0 2px;
+}
+
+.share-tooltip button {
+  appearance: none;
+  background: #E3E7EA;
+  border-radius: 0 2px 2px 0;
+  border: none;
+  cursor: pointer;
+  transition: backround .3s;
+}
+
+.share-tooltip button:hover {
+  background: #9eaab6;
+  transition-duration: .1s;
 }

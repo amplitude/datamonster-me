@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import DecorationItem from '../DecorationItem/DecorationItem';
-import { categories, decorations } from '../../lib/asset_config'
+import { categories, decorations } from '../../lib/asset-config'
 
 import './DecorationBar.css';
 
@@ -11,6 +11,11 @@ const DISPLAY_LENGTH = 6;
 class DecorationBar extends Component {
   state = {
     position: 0,
+  }
+
+  getDecorationsList() {
+    const { props } = this;
+    return decorations[categories[props.categorySelected]].flat()
   }
 
   goLeft() {
@@ -25,9 +30,9 @@ class DecorationBar extends Component {
   }
 
   goRight() {
-    const { props, state } = this;
+    const { state } = this;
 
-    const decorationList = decorations[categories[props.categorySelected]];
+    const decorationList = this.getDecorationsList()
 
     let destination = state.position + DISPLAY_LENGTH;
     if (destination > decorationList.length - DISPLAY_LENGTH) {
@@ -43,10 +48,19 @@ class DecorationBar extends Component {
     }
   }
 
+  // Determine if a decoration item should be marked as selected
+  isSelected(decorationNum) {
+    const { props } = this;
+    if (Array.isArray(props.decorationSelected)) {
+      return props.decorationSelected.includes(decorationNum)
+    } else return decorationNum === props.decorationSelected
+  }
+
   render() {
     const { props, state } = this;
 
-    const decorationList = decorations[categories[props.categorySelected]]
+    const decorationList = this.getDecorationsList()
+
     const displayList = decorationList.slice(state.position, state.position + DISPLAY_LENGTH);
 
     return (
@@ -66,12 +80,15 @@ class DecorationBar extends Component {
               name={decoration}
               border={i !== 0}
               categoryName={categories[props.categorySelected]}
-              selected={decorationNum === props.decorationSelected}
+              selected={this.isSelected(decorationNum)}
               onClick={() => props.updateDecoration(decorationNum)}
             />);
           })}
         <div
-          className={classNames({chevron: true, hide: state.position >= decorationList.length - DISPLAY_LENGTH})}
+          className={classNames({
+            chevron: true,
+            hide: state.position >= decorationList.length - DISPLAY_LENGTH,
+          })}
           onClick={() => this.goRight()}
         >
           ›

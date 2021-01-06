@@ -6,7 +6,11 @@ import DecorationBar from './components/DecorationBar/DecorationBar';
 import PreviewArea from './components/PreviewArea/PreviewArea';
 import TopBar from './components/TopBar/TopBar';
 
-import { categories, decorations } from './lib/asset_config';
+import {
+  categories,
+  decorations,
+  mutuallyExclusiveDecorations
+} from './lib/asset-config';
 
 import './App.css';
 
@@ -14,15 +18,22 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const numCategories = categories.length;
-    let defaultDecorations = Array(numCategories);
-    defaultDecorations.fill(0);
+    const decorations = this.makeEmptyDecorationsArray()
 
     this.state = {
-      categorySelected: 0,
-      decorations: defaultDecorations,
       srcImg: null,
+      categorySelected: 0,
+      decorations,
+      history: [ decorations ],
+      historyIndex: 0,
     }
+  }
+
+  makeEmptyDecorationsArray() {
+    const numCategories = categories.length;
+    let defaultDecorations = Array(numCategories);
+    defaultDecorations.fill([ 0 ]);
+    return defaultDecorations
   }
 
   updateCategory(category) {
@@ -32,52 +43,132 @@ class App extends Component {
   }
 
   randomize() {
-    const numCategories = categories.length;
-    let randomDecorations = Array(numCategories);
-    randomDecorations.fill(0);
-    for (let i = 0; i < categories.length; i++) {
-      const numDecorations = decorations[categories[i]].length;
-      randomDecorations[i] = Math.floor(Math.random() * numDecorations);
-    }
+    const showOnesie = Math.random() > 0.5
+    this.addHistoryState(
+      this.makeEmptyDecorationsArray().map(function(val, i) {
+        const numDecorations = decorations[categories[i]].length
 
-    this.setState({
-      decorations: randomDecorations,
-    });
+        // Don't allow onesie and hat at the same time
+        if (showOnesie && categories[i] == 'hats') return [0]
+        else if (!showOnesie && categories[i] == 'onesies') return [0]
+
+        // Choose a random entry
+        return [Math.floor(Math.random() * numDecorations)]
+      }),
+    )
   }
 
   reset() {
-    const numCategories = categories.length;
-    let defaultDecorations = Array(numCategories);
-    defaultDecorations.fill(0);
-
-    this.setState({
-      decorations: defaultDecorations,
-    });
+    this.addHistoryState(this.makeEmptyDecorationsArray());
   }
 
   setSrcImg(img) {
     this.setState({srcImg: img});
   }
 
-  updateDecoration(decoration) {
+  // A decoration cateogry supports multi select if there is more than one
+  // level of depth.
+  categorySupportsMultiSelect(categoryIndex) {
+    return !!Object.values(decorations)[categoryIndex].find(decoration => {
+      return Array.isArray(decoration)
+    })
+  }
+
+  updateDecoration(choice) {
     const { state } = this;
 
-    const decorations = state.decorations.map((elem, i) => {
-      return i === state.categorySelected ? decoration : elem;
+    // Loop thrrough the selections of a decoration category
+    const decorations = state.decorations.map((selections, categoryIndex) => {
+
+      // If not the active category, don't change
+      if (categoryIndex !== state.categorySelected) {
+        return selections
+      }
+
+      // If the category doesn't support multiselect, set the value directly
+      if (!this.categorySupportsMultiSelect(categoryIndex)) {
+        return [ choice ]
+      }
+
+      // Is a multiselect category and the clear button clicked, select only
+      // the clear icon. Otherwise, make sure the clear button is removed
+      let choices = selections
+      if (choice == 0) {
+        return [ 0 ]
+      } else {
+        choices = choices.filter(selection => selection !== 0)
+      }
+
+      // If this decoration is already selected, remove it
+      if (choices.includes(choice)) {
+        choices = choices.filter(selection => selection != choice)
+        if (choices.length == 0) return [ 0 ] // Choose clear icon
+        return choices
+      }
+
+      // Deselect sibling choices
+      const siblings = mutuallyExclusiveDecorations[categoryIndex][choice]
+      choices = choices.filter(selection => !siblings.includes(selection))
+
+      // Add the choice to the list of choices
+      return [ ...choices, choice ]
     })
 
-    this.setState({ decorations });
+    // If the category is onesies or hats, clear the other choices
+    const selectedCategoryName = categories[state.categorySelected]
+    if (selectedCategoryName == 'hats') {
+      decorations[categories.findIndex(cat => cat == 'onesies')] = [0]
+    } else if (selectedCategoryName == 'onesies') {
+      decorations[categories.findIndex(cat => cat == 'hats')] = [0]
+    }
+
+    // Store the new set of selected categories
+    this.addHistoryState(decorations)
+  }
+
+  addHistoryState(decorations) {
+    const { state } = this,
+      newIndex = state.historyIndex + 1
+    this.setState({
+      decorations,
+      history: state.history.slice(0, newIndex).concat([ decorations ]),
+      historyIndex: newIndex,
+    });
+  }
+
+  undo() {
+    this.gotoHistoryIndex(this.state.historyIndex - 1)
+  }
+
+  redo() {
+    this.gotoHistoryIndex(this.state.historyIndex + 1)
+  }
+
+  gotoHistoryIndex(index) {
+    this.setState({
+      decorations: this.state.history[index],
+      historyIndex: index,
+    })
   }
 
   render() {
     const { state } = this;
 
+    // Determine whether to show undo and redo
+    const hasUndo = state.historyIndex > 0,
+      hasRedo = state.historyIndex < state.history.length - 1
+
     return (
       <div className="App">
         <TopBar />
         <ButtonBar
+          undo={() => this.undo()}
+          hasUndo={hasUndo}
+          redo={() => this.redo()}
+          hasRedo={hasRedo}
           randomize={() => this.randomize()}
-          reset={() => this.reset()}
+          reset={() => this.reset() }
+          choices={state.decorations }
           srcImg={state.srcImg}
         />
         <PreviewArea

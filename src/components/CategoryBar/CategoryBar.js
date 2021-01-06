@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import CategoryItem from '../CategoryItem/CategoryItem';
-import { categories } from '../../lib/asset_config'
+import { categories } from '../../lib/asset-config'
 
 import './CategoryBar.css';
 
