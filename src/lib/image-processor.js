@@ -21,13 +21,13 @@ export function makeComposite(choices, {
 		selections.forEach(selectionIndex => {
 			const categoryName = categories[categoryIndex];
 			const decorationName = decorations[categoryName].flat()[selectionIndex]
-			images.push(`${assetsDir}/${categoryName}/${decorationName}.png`)
+			images.push(`${assetsDir}/${categoryName}/${decorationName}.svg`)
 		})
 		return images
 	}, [])
 
 	// Append the choices to the base image
-	const images = [`${assetsDir}/poses/DatamonsterBase1_Hero Artboard1x.png`]
+	const images = [`${assetsDir}/poses/DatamonsterBase1_Hero Artboard1x.svg`]
 		.concat(decorationImages)
 
 	// Returns a promise
