@@ -1,0 +1,11 @@
+customHeaders:
+
+  # Cache assets for 10min (like 1 session)
+  - pattern: '*.svg'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=600
+  - pattern: '*.png'
+    headers:
+      - key: Cache-Control
+        value: public, max-age=600
