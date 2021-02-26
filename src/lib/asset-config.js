@@ -8,6 +8,7 @@ export const decorations = {
   ],
   'hats': [
     'empty',
+    'FishbowlHelmetDMEHero Artboard1x',
     'PartyHat1_Hero Artboard1x',
     'BallCap_Hero Artboard1x',
     'ChefsHat_Hero Artboard1x',
@@ -27,6 +28,8 @@ export const decorations = {
   ],
   'onesies': [
     'empty',
+    'SpaceSuitDMEHero Artboard1x',
+    'FlightSuitDMEHero Artboard1x',
     'DragonOnesieHero Artboard1x',
     'UnicornOnesie_Hero Artboard1x',
     'UntitledGooseHero Artboard1x',
@@ -50,6 +53,7 @@ export const decorations = {
       'Stroopwafel_Hero Artboard1x',
     ],
     [
+      'RocketDMEHero Artboard1x',
       'Laptop_Hero Artboard1x',
       'StuffedTiger_Hero Artboard1x',
     ],

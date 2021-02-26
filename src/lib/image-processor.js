@@ -27,7 +27,7 @@ export function makeComposite(choices, {
 	}, [])
 
 	// Append the choices to the base image
-	const images = [`${assetsDir}/poses/DatamonsterBase1_Hero Artboard1x.png`]
+	const images = [`${assetsDir}/poses/2021DMHeroHero Artboard1x.png`]
 		.concat(decorationImages)
 
 	// Returns a promise
